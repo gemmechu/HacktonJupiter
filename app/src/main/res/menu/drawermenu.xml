@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+            <item
+                android:id="@+id/facebook"
+                android:orderInCategory="100"
+                android:title="Add location"
+                android:icon="@drawable/ic_add_location_black_24dp"
+                android:checkable="true"
+                />
+            <item
+                android:id="@+id/SnapChat"
+                android:orderInCategory="200"
+                android:title="languages"
+                android:icon="@drawable/ic_language_black_24dp"
+                android:checkable="true"
+                />
+
+            <item
+                android:id="@+id/Instagram"
+                android:orderInCategory="300"
+                android:icon="@drawable/ic_verified_user_black_24dp"
+                android:title="verify loaction"
+                />
+
+
+
+</menu>
