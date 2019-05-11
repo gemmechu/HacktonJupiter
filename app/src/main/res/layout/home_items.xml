@@ -16,7 +16,7 @@
             android:id="@+id/img"
             android:background="@color/colorPrimary"
             android:backgroundTint="@color/white"
-            
+            android:src="@drawable/ic_local_gas_station_black_24dp"
             app:backgroundTint="#4CAF50"
             app:backgroundTintMode="add" />
         <TextView
@@ -24,7 +24,7 @@
             android:fontFamily="@font/robotoslab_light"
             android:layout_marginVertical="5dp"
             android:gravity="center_horizontal"
-
+            android:text="Hospital"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
