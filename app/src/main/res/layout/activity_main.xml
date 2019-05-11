@@ -16,7 +16,6 @@
 
 
         <android.support.design.widget.AppBarLayout
-            android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
@@ -24,7 +23,6 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <android.support.design.widget.CollapsingToolbarLayout
-                android:id="@+id/collapsing_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
@@ -107,7 +105,6 @@
                             android:src="@drawable/ic_search_black_24dp" />
 
                         <EditText
-                            android:id="@+id/et_search"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -229,9 +226,8 @@
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="1000dp"
-            android:layout_margin="10dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            >
+            android:layout_margin="10dp">
+            <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->>
             <FrameLayout
 
                 android:id="@+id/fragment_container"
