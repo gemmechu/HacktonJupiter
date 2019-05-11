@@ -1,5 +1,6 @@
 package com.example.pinpointer.Activity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -12,7 +13,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.pinpointer.Fragment.AddLocationFragment;
 import com.example.pinpointer.Fragment.HomeFragment;
 import com.example.pinpointer.Fragment.VerifyLocationFragment;
 import com.example.pinpointer.R;
@@ -53,10 +53,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.addLocation:
-                Toast.makeText(this," location clicked",Toast.LENGTH_SHORT).show();
-                fragment = new AddLocationFragment();
-                // Not implemented here
-                break;
+                Intent i = new Intent(MainActivity.this,AddLocation.class);
+                startActivity(i);
+                return true;
             case R.id.verifyLocation:
                 fragment = new VerifyLocationFragment();
                 Toast.makeText(this," verify clicked",Toast.LENGTH_SHORT).show();
