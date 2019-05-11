@@ -1,6 +1,7 @@
 package com.example.pinpointer.Activity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -12,12 +13,18 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.example.pinpointer.Adapter.HomeItems;
+import com.example.pinpointer.Adapter.HomeItemsAdapter;
 import com.example.pinpointer.Fragment.HomeFragment;
 import com.example.pinpointer.Fragment.VerifyLocationFragment;
 import com.example.pinpointer.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -26,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private NavigationView navigationView;
     Fragment fragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +50,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         final Switch langSwitch=findViewById(R.id.switch_lang);
         navigationView.setNavigationItemSelectedListener(this);
+
+
         fragment = new HomeFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
 
+
     }
+
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

@@ -7,36 +7,14 @@
     tools:context=".Fragment.HomeFragment">
 
 
-    <GridLayout
-        android:columnCount="3"
-        android:rowCount="1"
+    <GridView
+        android:id="@+id/home_grid"
+        android:numColumns="auto_fit"
+        android:columnWidth="100dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.design.widget.FloatingActionButton
-            android:background="@color/colorPrimary"
-            android:backgroundTint="@color/white"
-            android:layout_marginHorizontal="5dp"
-            android:src="@drawable/ic_local_gas_station_black_24dp"
-            app:backgroundTint="#4CAF50"
 
-            app:backgroundTintMode="add" />
-        <android.support.design.widget.FloatingActionButton
-            android:background="@color/colorPrimary"
-            android:backgroundTint="@color/white"
-            android:layout_marginHorizontal="5dp"
-            android:src="@drawable/ic_local_gas_station_black_24dp"
-            app:backgroundTint="#4CAF50"
-            app:backgroundTintMode="add" />
-        <android.support.design.widget.FloatingActionButton
-            android:background="@color/colorPrimary"
-
-            android:backgroundTint="@color/white"
-            android:layout_marginHorizontal="5dp"
-            android:src="@drawable/ic_local_gas_station_black_24dp"
-            app:backgroundTint="#4CAF50"
-            app:backgroundTintMode="add" />
-
-    </GridLayout>
+    </GridView>
 
 </FrameLayout>
