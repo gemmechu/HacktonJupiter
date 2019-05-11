@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.pinpointer.Fragment.HomeFragment;
@@ -38,8 +40,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
+        final Switch langSwitch=findViewById(R.id.switch_lang);
         navigationView.setNavigationItemSelectedListener(this);
+        fragment = new HomeFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        langSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(langSwitch.isChecked()){
+                    Toast.makeText(getApplicationContext(),"aa",Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"noo",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     @Override
@@ -47,21 +62,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragment = null;
         switch (item.getItemId()) {
             case R.id.home:
-                Toast.makeText(this," location clicked",Toast.LENGTH_SHORT).show();
+
                 fragment = new HomeFragment();
                 // Not implemented here
                 break;
 
+            case R.id.language:
+                fragment = new HomeFragment();
+                break;
             case R.id.addLocation:
                 Intent i = new Intent(MainActivity.this,AddLocation.class);
                 startActivity(i);
-                return true;
+                break;
             case R.id.verifyLocation:
                 fragment = new VerifyLocationFragment();
-                Toast.makeText(this," verify clicked",Toast.LENGTH_SHORT).show();
 
+                break;
                 // Not implemented here
-            break;
+
             default:
                 break;
         }
