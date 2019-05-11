@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         toolbar =  findViewById(R.id.toolbarindrawer);
-        toolbar.setTitle(R.string.app_name);
 
         navigationView = (NavigationView) findViewById(R.id.navigationView);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
