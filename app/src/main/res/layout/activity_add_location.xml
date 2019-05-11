@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:gravity="center">
@@ -36,7 +36,18 @@
         </LinearLayout>
     </android.support.design.widget.AppBarLayout>
 
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabSize="normal"
+        android:backgroundTint="@color/white"
+        app:layout_anchor="@id/appbar"
+        app:layout_anchorGravity="bottom|end"
+        android:src="@drawable/ic_done_black_24dp"
+        android:layout_margin="16dp"/>
+
     <ScrollView
+        android:id="@+id/login_form"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -47,49 +58,25 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:orientation="vertical"
+                android:padding="12dp"
                 android:layout_marginTop="220dp">
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@color/grey_40"
-                    android:layout_marginTop="60dp">
-
-                    <Spinner
-                        android:id="@+id/spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="50dp"
-                        android:layout_gravity="center"
-                        android:paddingLeft="5dp"/>
-
-                </android.support.design.widget.TextInputLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/spacing_middle" />
-
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/grey_40"
-                    >
+                    android:layout_marginTop="10dp">
 
                     <android.support.v7.widget.AppCompatEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Name"
-                        android:paddingLeft="@dimen/spacing_large"
-                        android:textColor="#000000"
-                        android:theme="@style/EditText.Yellow" />
+                        android:textColor="@android:color/white"
+                        android:theme="@style/EditText.Yellow"
+                        />
 
                 </android.support.design.widget.TextInputLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/spacing_middle" />
 
 
 
@@ -97,8 +84,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/txt_area_dark_yellow"
-                    android:paddingLeft="@dimen/spacing_large"
-                    android:paddingTop="5dp"
+                    android:padding="@dimen/spacing_large"
                     android:textColorHint="@color/grey_40">
 
                     <android.support.v7.widget.AppCompatEditText
@@ -110,26 +96,28 @@
                         android:inputType="textMultiLine"
                         android:maxLines="12"
                         android:minLines="7"
-                        android:textColor="#000000"
-                        android:theme="@style/EditText.Yellow"
-                        />
+                        android:textColor="@android:color/white"
+                        android:theme="@style/EditText.Yellow" />
 
                 </android.support.design.widget.TextInputLayout>
 
-                <android.support.v7.widget.AppCompatButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="30dp"
-                    android:padding="20dp"
-                    android:text="Add"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:theme="@style/Button.Primary" />
 
-                <View
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/spacing_middle" />
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/grey_40"
+                    android:layout_marginTop="10dp">
+
+
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:autofillHints="@string/add_location" />
+                </android.support.design.widget.TextInputLayout>
+
+
 
 
 

@@ -1,14 +1,8 @@
 package com.example.pinpointer.Activity;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -18,73 +12,123 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.GridView;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.pinpointer.Adapter.HomeItems;
-import com.example.pinpointer.Adapter.HomeItemsAdapter;
+import com.example.pinpointer.Api.Location;
+import com.example.pinpointer.Api.LocationPlaceHolder;
 import com.example.pinpointer.Fragment.HomeFragment;
 import com.example.pinpointer.Fragment.VerifyLocationFragment;
-import com.example.pinpointer.LocaleHelper;
-import com.example.pinpointer.Main;
 import com.example.pinpointer.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import io.paperdb.Paper;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
     private Toolbar toolbar;
-    TextView heyTv;
     private NavigationView navigationView;
     Fragment fragment;
 
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String longitude = "longitude";
+    public static final String latitude = "latitude";
+    SharedPreferences sharedpreferences;
 
-    @SuppressLint("ResourceAsColor")
+    SharedPreferences.Editor editor;
+
+
+    private ImageButton search;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
-        toolbar = findViewById(R.id.toolbarindrawer);
+        toolbar =  findViewById(R.id.toolbarindrawer);
 
         navigationView = (NavigationView) findViewById(R.id.navigationView);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
+        toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
-        final Switch langSwitch = findViewById(R.id.switch_lang);
+        final Switch langSwitch=findViewById(R.id.switch_lang);
         navigationView.setNavigationItemSelectedListener(this);
-        heyTv=findViewById(R.id.hey_tv);
-
         fragment = new HomeFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-        Paper.init(this);
-        if(!isNetworkAvailable()){
 
-            Toast toast= Toast.makeText(getApplicationContext(),"Ops!! check Your Connection",Toast.LENGTH_LONG);
-            View view =toast.getView();
-            view.setBackgroundResource(R.color.amber_500);
 
-            TextView textView=view.findViewById(android.R.id.message);
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        editor = sharedpreferences.edit();
 
-            textView.setTextColor(R.color.white);
-            toast.show();
-        }
+        search = findViewById(R.id.search);
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText searchKey = findViewById(R.id.searchKey);
+                Toast.makeText(MainActivity.this,searchKey.getText().toString(),Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+        getLocation();
+
+
     }
+
+    public void getLocation(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.ipfind.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        LocationPlaceHolder locationPlaceHolder = retrofit.create(LocationPlaceHolder.class);
+
+
+        Call<Location> call = locationPlaceHolder.getLocation();
+
+        call.enqueue(new Callback<Location>() {
+            @Override
+            public void onResponse(Call<Location> call, Response<Location> response) {
+                if(!response.isSuccessful()){
+                    return;
+                }
+
+                Location location = response.body();
+                editor.putString(latitude, location.getLatitude());
+                editor.putString(longitude, location.getLongitude());
+                editor.commit();
+                TextView tv = findViewById(R.id.longitude);
+                tv.setText("Longitude "+ sharedpreferences.getString(longitude,"Unable to get longitude"));
+                TextView tv2 = findViewById(R.id.latitude);
+                tv2.setText("Latitude "+ sharedpreferences.getString(latitude,"Unable to get latitude"));
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Location> call, Throwable t) {
+                Toast.makeText(MainActivity.this,t.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
 
 
     @Override
@@ -92,95 +136,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragment = null;
         switch (item.getItemId()) {
             case R.id.home:
-
                 fragment = new HomeFragment();
                 // Not implemented here
                 break;
 
             case R.id.language:
-        if(Main.langCheck==0){
-
-            Paper.book().write("language","am");
-            updateView((String) Paper.book().read("language"));
-            Main.langCheck=1;
-        }
-        else{
-
-            Paper.book().write("language","en");
-            updateView((String) Paper.book().read("language"));
-            Main.langCheck=0;
-        }
-
-
-
-                closeDrawer();
-                return true;
-
+                fragment = new HomeFragment();
+                break;
             case R.id.addLocation:
-                Intent i = new Intent(MainActivity.this, AddLocation.class);
+                Intent i = new Intent(MainActivity.this,AddLocation.class);
                 startActivity(i);
-                return  true;
+                return true;
             case R.id.verifyLocation:
-                Intent intent = new Intent(MainActivity.this, VerifyActivity.class);
-                startActivity(intent);
-                return  true;
-            // Not implemented here
+                fragment = new VerifyLocationFragment();
+
+                break;
+                // Not implemented here
 
             default:
                 break;
         }
 
-
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
         closeDrawer();
         return true;
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.language, menu);
-//        return super.onCreateOptionsMenu(menu);
-//    }
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item){
-//        switch (item.getItemId()) {
-//            case R.id.menu1:
-//                item.setIcon(R.drawable.ic_language_black_24dp);
-//                break;
-//
-//            default:
-//                break;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-
-    private void closeDrawer() {
+    private void closeDrawer(){
         drawerLayout.closeDrawer(GravityCompat.START);
     }
-
-
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
-
-    public  void updateView(String lang){
-        Context context= LocaleHelper.setLocale(getApplicationContext(),lang);
-        Resources resources=context.getResources();
-        heyTv.setText(resources.getString(R.string.hey_there));
-//DisplayMetrics displayMetrics=resources.getDisplayMetrics();
-//        Configuration configuration=resources.getConfiguration();
-//        resources.updateConfiguration(configuration,displayMetrics);
-//        Intent i = new Intent(this,MainActivity.class);
-//        startActivity(i);
-//        finish();
-
-//        loginLang.setText(resources.getString(R.string.language));
-//        loginBtn.setText(resources.getString(R.string.login));
-//        phoneTxt.setHint(resources.getString(R.string.phone_091215));
-//        skipBtn.setText(resources.getString(R.string.skip));
-    }
-
 }

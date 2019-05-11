@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="@drawable/addisabeba"
-
     android:layout_height="200dp">
 
 
@@ -10,24 +9,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
+        android:background="#9759AD24"
+        android:padding="12dp"
         android:layout_alignParentBottom="true">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Zekaryas Tadele"
+            android:id="@+id/longitude"
             android:layout_marginBottom="5dp"
             android:textSize="15sp"
-            android:textColor="#ccc"/>
+            android:textColor="#fff"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/latitude"
             android:text="ZekaryasDinku@gmail.com"
             android:textSize="14sp"
-            android:textColor="#eee"/>
+            android:textColor="#fff"/>
     </LinearLayout>
 
 

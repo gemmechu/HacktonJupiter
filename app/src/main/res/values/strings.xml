@@ -1,20 +1,18 @@
 <resources>
     <string name="app_name">PinPointer</string>
-    <string name="open" translatable="false">Open</string>
-    <string name="close" translatable="false">Close</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="add_location" translatable="false">Add Location</string>
-    <string name="lang" translatable="false">EN</string>
-    <string name="Home">Home</string>
-    <string name="verify_loaction">verify loaction</string>
-    <string name="hey_there">Hey There</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_location">Add Location</string>
 
     <string-array name="institution">
-        <item>ATM</item>
+        <item>Select an Institution</item>
         <item>Hospital</item>
         <item>Hotel</item>
         <item>Restaurant</item>
+        <item>ATM</item>
         <item>Gas Station</item>
         <item>School</item>
 
