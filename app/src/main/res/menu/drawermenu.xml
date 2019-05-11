@@ -4,6 +4,14 @@
 
 
             <item
+            android:id="@+id/home"
+            android:orderInCategory="50"
+            android:title="Home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:checkable="true"
+            />
+
+            <item
                 android:id="@+id/addLocation"
                 android:orderInCategory="100"
                 android:title="Add location"
@@ -15,6 +23,7 @@
                 android:id="@+id/language"
                 android:orderInCategory="200"
                 android:title="languages"
+                app:actionLayout="@layout/radio_button"
                 android:icon="@drawable/ic_language_black_24dp"
                 android:checkable="true"
                 />

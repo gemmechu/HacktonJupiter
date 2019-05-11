@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.pinpointer.Fragment.AddLocationFragment;
+import com.example.pinpointer.Fragment.HomeFragment;
 import com.example.pinpointer.Fragment.VerifyLocationFragment;
 import com.example.pinpointer.R;
 
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         toolbar =  findViewById(R.id.toolbarindrawer);
-        toolbar.setTitle(R.string.app_name);
 
         navigationView = (NavigationView) findViewById(R.id.navigationView);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
@@ -46,6 +46,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         fragment = null;
         switch (item.getItemId()) {
+            case R.id.home:
+                Toast.makeText(this," location clicked",Toast.LENGTH_SHORT).show();
+                fragment = new HomeFragment();
+                // Not implemented here
+                break;
 
             case R.id.addLocation:
                 Toast.makeText(this," location clicked",Toast.LENGTH_SHORT).show();
