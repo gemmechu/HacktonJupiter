@@ -44,17 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         fragment = new HomeFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-        langSwitch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(langSwitch.isChecked()){
-                    Toast.makeText(getApplicationContext(),"aa",Toast.LENGTH_LONG).show();
-                }
-                else{
-                    Toast.makeText(getApplicationContext(),"noo",Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+
     }
 
     @Override
