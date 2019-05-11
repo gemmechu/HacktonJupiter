@@ -51,9 +51,10 @@
                     app:layout_collapseMode="parallax">
 
                     <TextView
+                        android:id="@+id/hey_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Hey There"
+                        android:text="@string/hey_there"
                         android:textSize="30sp"
                         android:fontFamily="@font/robotoslab_bold"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
