@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.AddLocationFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <GridLayout
+        android:columnCount="2"
+        android:rowCount="3"
+        android:layout_marginHorizontal="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Location: "
+            />
+        <EditText
+            android:hint="location"
+            />
+        <TextView
+            android:text="Description: "
+            />
+        <EditText
+            android:hint="description"
+            />
+        <Button
+            android:textColor="@color/cardview_light_background"
+            android:backgroundTint="@color/colorPrimary"
+            android:gravity="center"
+            android:text="Add Location"
+            />
+    </GridLayout>
+
+</FrameLayout>
