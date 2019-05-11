@@ -63,7 +63,27 @@
                         android:hint="Name"
                         android:textColor="@android:color/white"
                         android:theme="@style/EditText.Yellow"
-                        />
+                        android:paddingLeft="@dimen/spacing_large"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_middle" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/grey_40">
+
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:minHeight="50dp"
+                        android:layout_gravity="center"
+                        android:paddingLeft="5dp"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -75,7 +95,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/txt_area_dark_yellow"
-                    android:padding="@dimen/spacing_large"
+                    android:paddingLeft="@dimen/spacing_large"
                     android:textColorHint="@color/grey_40">
 
                     <android.support.v7.widget.AppCompatEditText
@@ -92,25 +112,20 @@
 
                 </android.support.design.widget.TextInputLayout>
 
+                <android.support.v7.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:padding="20dp"
+                    android:text="Add"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:theme="@style/Button.Primary" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/spacing_middle" />
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@color/grey_40"
-                    android:layout_marginTop="60dp">
-
-
-                    <Spinner
-                        android:id="@+id/spinner"
-                        android:autofillHints="@string/add_location"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        />
-                </android.support.design.widget.TextInputLayout>
-
 
 
 
