@@ -224,25 +224,22 @@
         <!--</android.support.design.widget.AppBarLayout>-->
 
 
+
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="1000dp"
             android:layout_margin="10dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             >
+            <FrameLayout
 
-            <LinearLayout
+                android:id="@+id/fragment_container"
+                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                >
 
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="You might have noticed that lot of android applications introduced a sliding panel menu to navigate between major modules of the application. Previously this kind of UI was done using some third party libraries where a list view and some swiping gestures used to achieve this. But now android itself officially introduced sliding panel menu by introducing a newer concept called Navigation Drawer in which we combine DrawerLayout and NavigationView to achieve the desired output.You might have noticed that lot of android applications introduced a sliding panel menu to navigate between major modules of the application. Previously this kind of UI was done using some third party libraries where a list view and some swiping gestures used to achieve this. But now android itself officially introduced sliding panel menu by introducing a newer concept called Navigation Drawer in which we combine DrawerLayout and NavigationView to achieve the desired output.You might have noticed that lot of android applications introduced a sliding panel menu to navigate between major modules of the application. Previously this kind of UI was done using some third party libraries where a list view and some swiping gestures used to achieve this. But now android itself officially introduced sliding panel menu by introducing a newer concept called Navigation Drawer in which we combine DrawerLayout and NavigationView to achieve the desired output.You might have noticed that lot of android applications introduced a sliding panel menu to navigate between major modules of the application. Previously this kind of UI was done using some third party libraries where a list view and some swiping gestures used to achieve this. But now android itself officially introduced sliding panel menu by introducing a newer concept called Navigation Drawer in which we combine DrawerLayout and NavigationView to achieve the desired output.You might have noticed that lot of android applications introduced a sliding panel menu to navigate between major modules of the application. Previously this kind of UI was done using some third party libraries where a list view and some swiping gestures used to achieve this. But now android itself officially introduced sliding panel menu by introducing a newer concept called Navigation Drawer in which we combine DrawerLayout and NavigationView to achieve the desired output.You might have noticed that lot of android applications introduced a sliding panel menu to navigate between major modules of the application. Previously this kind of UI was done using some third party libraries where a list view and some swiping gestures used to achieve this. But now android itself officially introduced sliding panel menu by introducing a newer concept called Navigation Drawer in which we combine DrawerLayout and NavigationView to achieve the desired output.You might have noticed that lot of android applications introduced a sliding panel menu to navigate between major modules of the application. Previously this kind of UI was done using some third party libraries where a list view and some swiping gestures used to achieve this. But now android itself officially introduced sliding panel menu by introducing a newer concept called Navigation Drawer in which we combine DrawerLayout and NavigationView to achieve the desired output.You might have noticed that lot of android applications introduced a sliding panel menu to navigate between major modules of the application. Previously this kind of UI was done using some third party libraries where a list view and some swiping gestures used to achieve this. But now android itself officially introduced sliding panel menu by introducing a newer concept called Navigation Drawer in which we combine DrawerLayout and NavigationView to achieve the desired output.You might have noticed that lot of android applications introduced a sliding panel menu to navigate between major modules of the application. Previously this kind of UI was done using some third party libraries where a list view and some swiping gestures used to achieve this. But now android itself officially introduced sliding panel menu by introducing a newer concept called Navigation Drawer in which we combine DrawerLayout and NavigationView to achieve the desired output.You might have noticed that lot of android applications introduced a sliding panel menu to navigate between major modules of the application. Previously this kind of UI was done using some third party libraries where a list view and some swiping gestures used to achieve this. But now android itself officially introduced sliding panel menu by introducing a newer concept called Navigation Drawer in which we combine DrawerLayout and NavigationView to achieve the desired output."/>
-
-            </LinearLayout>
+            </FrameLayout>
 
         </android.support.v4.widget.NestedScrollView>
 
