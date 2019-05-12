@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PinPointer</string>
+    <string name="add_location" translatable="false">አዲስ ቦታ</string>
+    <string name="close" translatable="false">ዝጋ</string>
+    <string name="open" translatable="false">ክፍት</string>
+    <string name="lang" translatable="false">AM</string>
+    <string name="Home">ምግቢያ</string>
+    <string name="verify_loaction">ሽርጋግጥ</string>
+    <string name="hey_there">ስላም</string>
+</resources>
