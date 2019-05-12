@@ -7,6 +7,13 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_location">Add Location</string>
 
+    <string name="hey_there">Hey There</string>
+    <string name="home">Home</string>
+    <string name="lang">Languages</string>
+    <string name="verify_loaction">Verify location</string>
+    <string name="find_nearby_places">Find nearby places</string>
+    <string name="hey">Hey There</string>
+
     <string-array name="institution">
         <item>Select an Institution</item>
         <item>Hospital</item>

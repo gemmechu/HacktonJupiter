@@ -6,7 +6,7 @@
             <item
             android:id="@+id/home"
             android:orderInCategory="50"
-            android:title="@string/Home"
+            android:title="@string/home"
             android:icon="@drawable/ic_home_black_24dp"
             android:checkable="true"
             />
